@@ -1,0 +1,162 @@
+$breakpoints: (
+  mobile: 600px,
+  tablet: 1024px,
+  laptop: 1240px,
+  desktop-lg: 1800px
+);
+
+@mixin breakpoint($breakpoint, $direction) {
+
+  // Get the breakpoint value.
+  $breakpoint-value: map-get($breakpoints, $breakpoint);
+  
+  @if $direction == min {
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  }
+} 
+//Mobile
+.header{
+  @include breakpoint(mobile,min ){
+    .hero{
+      max-width: 55rem;
+      img{
+        margin-block-end: 5rem;
+      }
+      
+      &__content{
+        margin: 0 auto;
+        max-width: 50rem;
+      }
+    }
+  }
+}
+.main{
+  @include breakpoint(mobile,min ){
+  top: -300px;
+    .benefits {
+      max-width: 120rem;
+      padding-top: 30rem;
+      flex-wrap: wrap;
+      flex-direction: row;
+      
+    }
+    .works{
+      max-width: 50rem;
+      &__img{
+        margin-block-end: 5rem;
+      }
+    }
+    .testimonials{
+      max-width: 120rem;
+      flex-wrap: wrap;
+      flex-direction: row;
+
+      .card__testimonial{
+        padding: 3.5rem;
+      }
+    
+    }
+  }
+}
+//SignUp
+.signup{
+  @include breakpoint(mobile,min ){
+    width: 100%;
+    max-width: 75rem;
+    padding-inline: 5rem;
+
+    .form{
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      input{
+        grid-column: 1 / 2;
+        width: 100%;
+      }
+      small{
+        grid-column: 1 / 2;
+        justify-items: start;
+        margin-inline-start: 0.5rem;
+        margin-block-start: 1rem;
+      }
+      .cta{
+        grid-column: 2 / -1;
+        grid-row:  1 / 2;
+        width: 80%;
+        padding: 1.2rem 3rem;
+        justify-self: end;
+
+      }
+    }
+  }
+ 
+}
+//Footer
+.footer{
+  @include breakpoint(mobile,min ){
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    &__info{
+      max-width: 50rem;
+    }
+    &__links{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    &__social{
+      grid-column: 2 / -1;
+      justify-content: flex-end;
+    }
+  }
+}
+
+
+
+//Desktop
+.header{
+  @include breakpoint(tablet,min ){
+    .nav{
+      max-width: 130rem;
+      margin: 0 auto;
+    }
+  }
+}
+.main{
+  @include breakpoint(tablet,min ){
+    .works{
+      max-width: 120rem;
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 5rem;
+      align-items: center;
+      img{
+        height: 100%;
+      }
+      .texts{
+        justify-self: center;
+        max-width: 50rem;
+      }
+    }
+  }
+}
+.footer{
+  @include breakpoint(tablet,min ){
+    grid-template-columns: repeat(4,1fr);
+    grid-template-areas: 
+    "info  info links social";
+    padding-inline: 15%;
+    
+    &__info{
+      grid-area: info;
+      height: 100%;
+    }
+    &__links{
+      grid-area: links;
+    }
+    &__social{
+      grid-area: social;
+    }
+  }
+}

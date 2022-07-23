@@ -1,0 +1,233 @@
+@use "colors" as c;
+@use "mixins" as m;
+
+// ### Headings, Call-to-actions, Header Navigation (Raleway)
+
+$font-family: "Open Sans", sans-serif;
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 1.4rem;
+  font-family: $font-family;
+  color: c.$White;
+  background-color: c.$DarkBlue;
+  // background-color: red;
+}
+// Header
+.header {
+  padding-inline: 5%;
+  margin-top: 2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../images/bg-curvy-mobile.svg");
+  background-position-y: 65%;
+  background-position-x: center;
+
+  .nav {
+    @include m.flex();
+    flex-direction: row;
+    justify-content: space-between;
+
+    img {
+      max-width: 30%;
+    }
+    .links {
+      list-style: none;
+      li {
+        display: inline-block;
+
+        .link {
+          color: c.$White;
+          text-decoration: none;
+          cursor: pointer;
+
+          &:hover {
+            color: cyan;
+            text-decoration: underline;
+          }
+        }
+        &:nth-child(2) {
+          margin-inline: 2rem;
+        }
+      }
+    }
+  }
+  // Hero
+  .hero {
+    width: calc(100% - 12%);
+    margin-inline: auto;
+    margin-block-start: 5rem;
+    img {
+      width: 100%;
+    }
+
+    &__content {
+      text-align: center;
+      margin-top: 2rem;
+      @include m.flex(2.5rem);
+      position: relative;
+      z-index: 100;
+    }
+  }
+}
+
+.main {
+  background-color: c.$DarkBlue-mb;
+  position: relative;
+  top: -270px;
+  z-index: 1;
+  margin-bottom: -39rem;
+  padding-bottom: 18rem;
+  // benefits
+  .benefits {
+    @include m.flex(8rem);
+    padding-top: 27rem;
+  }
+  // Works
+  .works {
+    img {
+      width: 100%;
+    }
+    .texts {
+      .paragraph {
+        margin-block: 1rem;
+      }
+    }
+    .cta-m {
+      @include m.flex(0.5rem);
+      flex-direction: row;
+      cursor: pointer;
+      img {
+        width: 10%;
+      }
+    }
+  }
+  // Testimonials
+  .testimonials {
+    @include m.flex(3.5rem);
+
+    .card__testimonial{
+      position: relative;
+      &:nth-child(1)::after{
+        content: '';
+        position: absolute;
+        background-image: url('../images/bg-quotes.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 30px;
+        height: 25px;
+        top: -20px;
+        left: 5px;
+        z-index: -1;
+
+      }
+    }
+  }
+ 
+}
+
+.signup {
+  max-width: 40rem;
+  position: absolute;
+  text-align: center;
+  top: -80px;
+  left: 0;
+  right: 0;
+  padding: 3rem 2.5rem;
+  background-color: c.$DarkBlue;
+  border-radius: 0.8rem;
+  z-index: 100;
+  .form {
+    padding-block-start: 4rem;
+    input {
+      display: inline-block;
+      width: 95%;
+      padding: 1.45rem 3rem;
+      border: none;
+      border-radius: 2rem;
+    
+      &::placeholder {
+        color: #ccc;
+      }
+    }
+    small{
+      display: block;
+      opacity: 0;
+      color: c.$LightRed;
+      margin-block: 0.5rem;
+      text-align: left;
+      margin-inline-start: 15%;
+    }
+  }
+}
+//Footer{
+.footer {
+  width: 100%;
+  padding: 30rem 4rem 4rem;
+  font-weight: 500;
+  background-color: c.$DarkBlue-fb;
+  position: relative;
+   // Sign
+  
+  img {
+    max-width: 50%;
+    margin-block-end: 2rem;
+  }
+  &__info {
+    .info {
+      @include m.flex(2rem);
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+      &:nth-child(3) {
+        margin-block: 1rem;
+      }
+    }
+  }
+  &__links {
+    margin-block: 5rem;
+    @include m.flex(2rem);
+    align-items: flex-start;
+    list-style: none;
+    .link {
+      margin-block: 0.5rem;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  &__social {
+    text-align: center;
+    margin-block-start: 5rem;
+    i {
+      font-size: 1.1rem;
+      width: 28px;
+      line-height: 1.6rem;
+      padding: 0.5rem;
+      border-radius: 50%;
+      border: 1px solid white;
+      cursor: pointer;
+      &:nth-child(2) {
+        margin-inline: 1rem;
+      }
+
+      &:hover {
+        color: c.$Cyan-cta;
+        border: 1px solid cyan;
+      }
+    }
+  }
+}
